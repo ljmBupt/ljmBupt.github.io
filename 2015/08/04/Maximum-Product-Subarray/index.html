@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Maximum Product Subarray | shuaker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="John Doe">
+  
+  
+    <meta name="description" content="1234567891011121314151617class Solution &amp;#123;public:    int maxProduct(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        if (nums.empty()) return 1;        int maxPdt = nums[0], maxHere = nums[0], minHere =">
+  
+  <meta name="description" content="1234567891011121314151617class Solution &amp;#123;public:    int maxProduct(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        if (nums.empty()) return 1;        int maxPdt = nums[0], maxHere = nums[0], minHere =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maximum Product Subarray">
+<meta property="og:url" content="http://www.myqsh.cn/2015/08/04/Maximum-Product-Subarray/index.html">
+<meta property="og:site_name" content="shuaker">
+<meta property="og:description" content="1234567891011121314151617class Solution &amp;#123;public:    int maxProduct(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        if (nums.empty()) return 1;        int maxPdt = nums[0], maxHere = nums[0], minHere =">
+<meta property="og:updated_time" content="2015-08-04T04:37:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maximum Product Subarray">
+<meta name="twitter:description" content="1234567891011121314151617class Solution &amp;#123;public:    int maxProduct(vector&amp;lt;int&amp;gt;&amp;amp; nums) &amp;#123;        if (nums.empty()) return 1;        int maxPdt = nums[0], maxHere = nums[0], minHere =">
+  
+    <link rel="alternate" href="/atom.xml" title="shuaker" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">shuaker</a></h1>
+    <p><a href="/">do not speak, just shua</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/tags/Leetcode">Leetcode</a></li>
+      
+        <li><a href="/tags/Dynamic-Programming">Dynamic Programming</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/08/04/Maximum-Product-Subarray/">
+  <time datetime="2015-08-04T04:37:08.000Z">
+    2015-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Maximum Product Subarray</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.empty()) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> maxPdt = nums[<span class="number">0</span>], maxHere = nums[<span class="number">0</span>], minHere = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i != nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmpMax = max(max(maxHere * nums[i], minHere * nums[i]),</span><br><span class="line">nums[i]);</span><br><span class="line">            <span class="keyword">int</span> tmpMin = min(min(maxHere * nums[i], minHere * nums[i]),</span><br><span class="line">nums[i]);</span><br><span class="line">            maxHere = tmpMax;</span><br><span class="line">            minHere = tmpMin;</span><br><span class="line">            maxPdt = max(maxPdt, maxHere);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxPdt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a>, <a class="tags-link" href="/tags/Leetcode/">Leetcode</a>, <a class="tags-link" href="/tags/Medium/">Medium</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">John Doe</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

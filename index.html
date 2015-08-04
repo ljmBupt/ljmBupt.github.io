@@ -66,6 +66,244 @@
   <header>
     
       <div class="icon"></div>
+      <a href="/2015/08/04/Unique-Binary-Search-Trees-II/">
+  <time datetime="2015-08-04T04:50:04.000Z">
+    2015-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/08/04/Unique-Binary-Search-Trees-II/">Unique Binary Search Trees II</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;TreeNode*&gt; generateTrees(<span class="keyword">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> generateTrees(<span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;TreeNode*&gt; generateTrees(<span class="keyword">int</span> begin, <span class="keyword">int</span> end) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;TreeNode*&gt; result;</span><br><span class="line">        <span class="keyword">if</span> (begin &gt; end) &#123;</span><br><span class="line">            result.push_back(<span class="literal">NULL</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = begin; k &lt;= end; ++k) &#123;</span><br><span class="line">            <span class="keyword">auto</span> left = generateTrees(begin, k - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">auto</span> right = generateTrees(k + <span class="number">1</span>, end);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> l : left) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">auto</span> r : right) &#123;</span><br><span class="line">                    TreeNode* root = <span class="keyword">new</span> TreeNode(k);</span><br><span class="line">                    root-&gt;left = l;</span><br><span class="line">                    root-&gt;right = r;</span><br><span class="line">                    result.push_back(root);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/08/04/Maximum-Product-Subarray/">
+  <time datetime="2015-08-04T04:37:08.000Z">
+    2015-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/08/04/Maximum-Product-Subarray/">Maximum Product Subarray</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.empty()) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> maxPdt = nums[<span class="number">0</span>], maxHere = nums[<span class="number">0</span>], minHere = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i != nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmpMax = max(max(maxHere * nums[i], minHere * nums[i]),</span><br><span class="line">nums[i]);</span><br><span class="line">            <span class="keyword">int</span> tmpMin = min(min(maxHere * nums[i], minHere * nums[i]),</span><br><span class="line">nums[i]);</span><br><span class="line">            maxHere = tmpMax;</span><br><span class="line">            minHere = tmpMin;</span><br><span class="line">            maxPdt = max(maxPdt, maxHere);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxPdt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/08/04/Triangle/">
+  <time datetime="2015-08-04T04:31:23.000Z">
+    2015-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/08/04/Triangle/">Triangle</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; triangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (triangle.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = triangle.size() - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j != triangle[i].size(); ++j)</span><br><span class="line">                triangle[i][j] += min(triangle[i + <span class="number">1</span>][j], triangle[i +</span><br><span class="line"><span class="number">1</span>][j + <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">return</span> triangle[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/08/04/Word-Break/">
+  <time datetime="2015-08-04T04:27:11.000Z">
+    2015-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/08/04/Word-Break/">Word Break</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">unordered_set</span>&lt;<span class="built_in">string</span>&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; f(s.size() + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">        f[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">int</span> minLen = INT_MAX, maxLen = INT_MIN;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> word : wordDict) &#123;</span><br><span class="line">            minLen = min(minLen, (<span class="keyword">int</span>)word.length());</span><br><span class="line">            maxLen = max(maxLen, (<span class="keyword">int</span>)word.length());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= s.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> pos;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = minLen, pos = i - minLen; j &lt;= maxLen &amp;&amp; pos &gt;=</span><br><span class="line"><span class="number">0</span>; ++j, --pos) &#123;</span><br><span class="line">                <span class="keyword">if</span> (f[pos] &amp;&amp; wordDict.find(s.substr(pos, j)) !=</span><br><span class="line">wordDict.end()) &#123;</span><br><span class="line">                    f[i] = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> f[s.size()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/08/04/Unique-Paths/">
+  <time datetime="2015-08-04T04:06:39.000Z">
+    2015-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/08/04/Unique-Paths/">Unique Paths</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; f(n + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        f[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</span><br><span class="line">                f[j + <span class="number">1</span>] = f[j] + f[j + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> f[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/08/04/House-Robber-II/">
+  <time datetime="2015-08-04T04:00:49.000Z">
+    2015-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/08/04/House-Robber-II/">House Robber II</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() == <span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">return</span> max(rob(nums, <span class="number">0</span>, nums.size() - <span class="number">1</span>), rob(nums, <span class="number">1</span>,</span><br><span class="line">nums.size()));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> best0 = <span class="number">0</span>, best1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = begin; i &lt; end; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = best0 + nums[i];</span><br><span class="line">            best0 = best1;</span><br><span class="line">            best1 = max(best1, tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> best1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/08/04/Unique-Paths-II/">
+  <time datetime="2015-08-04T03:51:45.000Z">
+    2015-08-04
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/08/04/Unique-Paths-II/">Unique Paths II</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePathsWithObstacles</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; obstacleGrid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (obstacleGrid.empty() || obstacleGrid[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; f(obstacleGrid[<span class="number">0</span>].size(), <span class="number">0</span>);</span><br><span class="line">        f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j != obstacleGrid[<span class="number">0</span>].size(); ++j)</span><br><span class="line">            f[j] = obstacleGrid[<span class="number">0</span>][j] == <span class="number">1</span> ? <span class="number">0</span> : f[j - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i != obstacleGrid.size(); ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j != obstacleGrid[<span class="number">0</span>].size(); ++j)</span><br><span class="line">                f[j] = obstacleGrid[i][j] == <span class="number">1</span> ? <span class="number">0</span> : j == <span class="number">0</span> ? f[j] : f[j</span><br><span class="line">- <span class="number">1</span>] + f[j];</span><br><span class="line">        <span class="keyword">return</span> f[obstacleGrid[<span class="number">0</span>].size() - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2015/08/04/Minimum-Path-Sum/">
   <time datetime="2015-08-04T03:29:48.000Z">
     2015-08-04
@@ -164,179 +402,11 @@
 
 
   
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/04/Best-Time-to-Buy-and-Sell-Stock/">
-  <time datetime="2015-08-04T02:53:29.000Z">
-    2015-08-04
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/04/Best-Time-to-Buy-and-Sell-Stock/">Best Time to Buy and Sell Stock</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (prices.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxPft = <span class="number">0</span>, bottom = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i != prices.size(); ++i) &#123;</span><br><span class="line">            bottom = min(bottom, prices[i]);</span><br><span class="line">            maxPft = max(maxPft, prices[i] - bottom);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxPft;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/04/Maximal-Square/">
-  <time datetime="2015-08-03T17:02:15.000Z">
-    2015-08-04
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/04/Maximal-Square/">Maximal Square</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maximalSquare</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (matrix.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; f(matrix[<span class="number">0</span>].size() + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> maxEdge = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= matrix.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> last = f[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= matrix[<span class="number">0</span>].size(); ++j) &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = f[j];</span><br><span class="line">                f[j] = matrix[i - <span class="number">1</span>][j - <span class="number">1</span>] == <span class="string">'1'</span> ? min(last, min(f[j -</span><br><span class="line"><span class="number">1</span>], f[j])) + <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">                last = tmp;</span><br><span class="line">                maxEdge = max(maxEdge, f[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxEdge * maxEdge;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/03/Unique-Binary-Search-Trees/">
-  <time datetime="2015-08-03T15:26:22.000Z">
-    2015-08-03
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/03/Unique-Binary-Search-Trees/">Unique Binary Search Trees</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; f(n + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        f[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; i; ++k)</span><br><span class="line">                f[i] += f[k] * f[i - k - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> f[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/03/Climbing-Stairs/">
-  <time datetime="2015-08-03T15:03:47.000Z">
-    2015-08-03
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/03/Climbing-Stairs/">Climbing Stairs</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">int</span> prev = <span class="number">1</span>, cur = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (--n) &#123;</span><br><span class="line">            cur += prev;</span><br><span class="line">            prev = cur - prev;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/08/03/House-Robber/">
-  <time datetime="2015-08-03T14:38:38.000Z">
-    2015-08-03
-  </time>
-</a>
-    
-    
-  
-    <h1 class="title"><a href="/2015/08/03/House-Robber/">House Robber</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> best0 = <span class="number">0</span>, best1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = best1 + nums[i];</span><br><span class="line">            best1 = best0;</span><br><span class="line">            best0 = max(best0, tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> best0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
 
   <nav id="pagination">
   
+  
+    <a href="/page/2/" class="next">下一页</a>
   
   <div class="clearfix"></div>
 </nav>
